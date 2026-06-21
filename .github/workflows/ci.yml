@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  application:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+
+  reputation-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: contracts/reputation
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@nightly
+        with:
+          toolchain: nightly-2026-01-01
+          targets: wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: contracts/reputation
+      - run: cargo test --locked
+      - name: Install Odra build tools
+        run: |
+          cargo install cargo-odra --version 0.1.7 --locked
+          sudo apt-get update
+          sudo apt-get install -y wabt
+          curl -fsSL https://github.com/WebAssembly/binaryen/releases/download/version_116/binaryen-version_116-x86_64-linux.tar.gz -o /tmp/binaryen.tgz
+          echo "c55b74f3109cdae97490faf089b0286d3bba926bb6ea5ed00c8c784fc53718fd  /tmp/binaryen.tgz" | sha256sum --check
+          tar -xzf /tmp/binaryen.tgz -C /tmp
+          sudo install /tmp/binaryen-version_116/bin/wasm-opt /usr/local/bin/wasm-opt
+      - run: cargo odra build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reputation-contract
+          path: |
+            contracts/reputation/wasm/*.wasm
+            contracts/reputation/resources/*.json
+          if-no-files-found: error

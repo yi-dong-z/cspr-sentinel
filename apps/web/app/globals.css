@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light dark;
+  --background: #f5f6f7;
+  --surface: #ffffff;
+  --surface-muted: #eceff1;
+  --border: #d6dade;
+  --text: #17191c;
+  --text-muted: #5e646b;
+  --accent: #cf2734;
+  --accent-strong: #a91c28;
+  --success: #147a4b;
+  --warning: #9a5b00;
+  --danger: #b4232f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #111315;
+    --surface: #181b1e;
+    --surface-muted: #22262a;
+    --border: #34393f;
+    --text: #f1f3f4;
+    --text-muted: #aeb4bb;
+    --accent: #f04450;
+    --accent-strong: #ff6670;
+    --success: #5ecb94;
+    --warning: #f0ad4e;
+    --danger: #ff707a;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  background: var(--background);
+}
+
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  min-height: 100dvh;
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font-geist), system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+
+::selection { background: color-mix(in srgb, var(--accent) 24%, transparent); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.mono { font-family: var(--font-geist-mono), ui-monospace, monospace; }

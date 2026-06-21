@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "cspr-sentinel": {
+      "type": "http",
+      "url": "http://localhost:3000/api/mcp",
+      "headers": {
+        "x-agent-api-key": "${AGENT_API_KEY}"
+      }
+    }
+  }
+}
