@@ -19,4 +19,6 @@ cargo test
 cargo odra build
 ```
 
+The reproducible CI build uses WABT plus Binaryen 130, whose `wasm-opt` supports the lowering flags emitted by the pinned Rust toolchain.
+
 Deploy the generated contract against Casper Testnet according to the [Odra documentation](https://odra.dev/docs/). Set the resulting contract hash as `REPUTATION_CONTRACT_HASH`.

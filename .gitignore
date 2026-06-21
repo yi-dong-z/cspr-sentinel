@@ -9,5 +9,6 @@ coverage/
 *.tsbuildinfo
 .DS_Store
 .vercel/
+.secrets/
 contracts/reputation/target/
 .vercel

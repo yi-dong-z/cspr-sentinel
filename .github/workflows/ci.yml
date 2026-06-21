@@ -44,10 +44,10 @@ jobs:
           cargo install cargo-odra --version 0.1.7 --locked
           sudo apt-get update
           sudo apt-get install -y wabt
-          curl -fsSL https://github.com/WebAssembly/binaryen/releases/download/version_116/binaryen-version_116-x86_64-linux.tar.gz -o /tmp/binaryen.tgz
-          echo "c55b74f3109cdae97490faf089b0286d3bba926bb6ea5ed00c8c784fc53718fd  /tmp/binaryen.tgz" | sha256sum --check
+          curl -fsSL https://github.com/WebAssembly/binaryen/releases/download/version_130/binaryen-version_130-x86_64-linux.tar.gz -o /tmp/binaryen.tgz
+          echo "0a18362361ad05465118cd8eeb72edaeec89de6894bc283576ef4e07aa3babcc  /tmp/binaryen.tgz" | sha256sum --check
           tar -xzf /tmp/binaryen.tgz -C /tmp
-          sudo install /tmp/binaryen-version_116/bin/wasm-opt /usr/local/bin/wasm-opt
+          sudo install /tmp/binaryen-version_130/bin/wasm-opt /usr/local/bin/wasm-opt
       - run: cargo odra build
       - uses: actions/upload-artifact@v4
         with:

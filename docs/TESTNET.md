@@ -11,6 +11,12 @@
 
 Never commit PEM files or paste private keys into client-side environment variables.
 
+Generate isolated ED25519 wallets once. The command refuses to overwrite existing keys and stores PEM files under the ignored `.secrets/casper` directory with mode 600:
+
+```bash
+pnpm wallets:generate
+```
+
 ## Configuration
 
 Next.js runs from `apps/web`, so copy the root example there and set the values:
