@@ -32,6 +32,7 @@ const required = [
   "OWNER_GITHUB_LOGIN",
   "CASPER_RPC_URL",
   "CASPER_AGENT_PRIVATE_KEY",
+  "CASPER_FEE_PAYER_PRIVATE_KEY",
   "CASPER_FACILITATOR_URL",
   "WCSPR_CONTRACT_PACKAGE_HASH",
   "ASSET_PROVIDER_PAYEE",
@@ -48,7 +49,7 @@ for (const name of ["DEMO_ADMIN_KEY", "AGENT_API_KEY", "NEXTAUTH_SECRET"]) {
   if (present(name)) add(`${name} strength`, process.env[name].length >= 32, "minimum 32 characters");
 }
 
-for (const name of ["CASPER_AGENT_PRIVATE_KEY", "REPUTATION_OPERATOR_PRIVATE_KEY"]) {
+for (const name of ["CASPER_AGENT_PRIVATE_KEY", "CASPER_FEE_PAYER_PRIVATE_KEY", "REPUTATION_OPERATOR_PRIVATE_KEY"]) {
   if (present(name)) {
     const pem = process.env[name].replaceAll("\\n", "\n");
     add(`${name} format`, /-----BEGIN (?:EC )?PRIVATE KEY-----[\s\S]+-----END (?:EC )?PRIVATE KEY-----/.test(pem), "PEM private key");

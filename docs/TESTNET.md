@@ -35,6 +35,8 @@ REPUTATION_CONTRACT_HASH=<contract hash>
 REPUTATION_OPERATOR_PRIVATE_KEY=<PEM with newlines encoded as \n>
 ```
 
+The deployment includes an optional official-scheme facilitator at `/api/facilitator`. To self-host it, set `CASPER_FEE_PAYER_PRIVATE_KEY`, point `CASPER_FACILITATOR_URL` to `https://your-deployment.example/api/facilitator`, and fund the fee-payer account with test CSPR. Keep this key separate from the buyer and provider wallets.
+
 Confirm the facilitator advertises the network before running a payment:
 
 ```bash
