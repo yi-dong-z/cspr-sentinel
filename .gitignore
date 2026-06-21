@@ -8,4 +8,6 @@ coverage/
 *.log
 *.tsbuildinfo
 .DS_Store
+.vercel/
 contracts/reputation/target/
+.vercel

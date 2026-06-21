@@ -19,6 +19,7 @@ export const authOptions: NextAuthOptions = {
 };
 
 export async function isAdminRequest(request?: Request): Promise<boolean> {
+  if (process.env.DEMO_MODE === "true") return true;
   const configuredKey = process.env.DEMO_ADMIN_KEY;
   const suppliedKey = request?.headers.get("x-demo-admin-key");
   if (configuredKey && suppliedKey && suppliedKey === configuredKey) return true;
@@ -28,6 +29,7 @@ export async function isAdminRequest(request?: Request): Promise<boolean> {
 }
 
 export function isAgentRequest(request: Request): boolean {
+  if (process.env.DEMO_MODE === "true") return true;
   if (process.env.NODE_ENV !== "production" && process.env.DEMO_MODE !== "false") return true;
   const expected = process.env.AGENT_API_KEY;
   const supplied = request.headers.get("x-agent-api-key");
