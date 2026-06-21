@@ -2,6 +2,11 @@
 
 CSPR Sentinel is a policy-controlled payment and reputation layer for autonomous AI agents on Casper. It exposes an MCP server that lets agents discover paid services, request x402 purchases, wait for human approval when required, and build bilateral reputation from verifiable outcomes.
 
+- Live demo: [cspr-sentinel.vercel.app](https://cspr-sentinel.vercel.app)
+- MCP endpoint: `https://cspr-sentinel.vercel.app/api/mcp`
+- Facilitator discovery: [embedded `/supported` endpoint](https://cspr-sentinel.vercel.app/api/facilitator/supported)
+- Source: [github.com/yi-dong-z/cspr-sentinel](https://github.com/yi-dong-z/cspr-sentinel)
+
 The included RWA diligence agent demonstrates the full flow with synthetic commercial paper data:
 
 1. It buys a low-cost asset verification service automatically.
@@ -111,6 +116,8 @@ pnpm testnet:preflight
 Real mode fails closed: an incomplete x402 or reputation configuration will stop the request instead of silently producing simulated transaction hashes.
 
 ## Deployment
+
+The public deployment runs on Vercel with Neon PostgreSQL persistence. It intentionally remains in clearly labelled simulation mode until the generated testnet wallets receive CSPR/WCSPR and the reputation contract is deployed; `DEMO_MODE=false` is the explicit cutover switch.
 
 1. Create a Neon database and apply the migration.
 2. Import this repository into Vercel with root directory `apps/web`.
