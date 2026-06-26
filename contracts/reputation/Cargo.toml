@@ -15,6 +15,7 @@ odra-build = "2"
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 odra-build = "2"
+odra-cli = "2"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -27,6 +28,11 @@ test = false
 [[bin]]
 name = "cspr_sentinel_reputation_build_schema"
 path = "bin/build_schema.rs"
+test = false
+
+[[bin]]
+name = "cspr_sentinel_reputation_cli"
+path = "bin/cli.rs"
 test = false
 
 [profile.release]

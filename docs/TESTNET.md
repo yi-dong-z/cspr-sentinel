@@ -17,10 +17,16 @@ Generate isolated ED25519 wallets once. The command refuses to overwrite existin
 pnpm wallets:generate
 ```
 
-After funding the generated `agent` public key once through the official faucet, distribute 100 test CSPR to the facilitator and reputation operator:
+After funding the generated `agent` public key once through the official faucet, distribute 100 test CSPR to the facilitator and 500 test CSPR to the reputation operator:
 
 ```bash
 pnpm wallets:fund-roles
+```
+
+Deploy the reputation registry with the funded operator. The script runs the pinned Odra CLI in Docker and writes the address to `resources/testnet-contracts.toml`:
+
+```bash
+pnpm contract:deploy:testnet
 ```
 
 ## Configuration

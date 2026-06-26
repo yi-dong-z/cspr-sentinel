@@ -14,6 +14,7 @@
     "testnet:preflight": "node scripts/testnet-preflight.mjs",
     "wallets:generate": "cd apps/web && node scripts/generate-testnet-wallets.mjs",
     "wallets:fund-roles": "cd apps/web && node scripts/fund-testnet-roles.mjs",
+    "contract:deploy:testnet": "./scripts/deploy-reputation-testnet.sh",
     "check": "pnpm typecheck && pnpm test && pnpm security:scan && pnpm build",
     "db:generate": "pnpm --filter @cspr-sentinel/core db:generate",
     "db:migrate": "pnpm --filter @cspr-sentinel/core db:migrate"

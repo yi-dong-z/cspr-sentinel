@@ -21,4 +21,10 @@ cargo odra build
 
 The reproducible CI build uses WABT plus Binaryen 130, whose `wasm-opt` supports the lowering flags emitted by the pinned Rust toolchain.
 
-Deploy the generated contract against Casper Testnet according to the [Odra documentation](https://odra.dev/docs/). Set the resulting contract hash as `REPUTATION_CONTRACT_HASH`.
+The included `cspr_sentinel_reputation_cli` registers an Odra deploy script that initializes the operator to the signing account. From the repository root, deploy with Docker after funding the generated operator wallet:
+
+```bash
+pnpm contract:deploy:testnet
+```
+
+The command uses the ignored `.secrets/casper/reputation-operator.pem`, targets `casper-test`, and records the deployed address in `resources/testnet-contracts.toml`. Set the resulting contract package hash as `REPUTATION_CONTRACT_HASH`.

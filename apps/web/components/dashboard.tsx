@@ -190,7 +190,7 @@ export function Dashboard({ initialState, initialMode }: { initialState: Dashboa
           <div className="min-w-0"><div className="mb-5 flex items-end justify-between"><div><h2 className="text-balance text-2xl font-semibold">Payment ledger</h2><p className="mt-1 text-sm text-[var(--text-muted)]">Policy decisions and chain evidence for every request.</p></div><Coins size={24} className="text-[var(--accent)]" /></div><PaymentLedger state={state} busy={busy} onRate={rate} /></div>
         </section>
       </main>
-      <footer className="border-t border-[var(--border)] px-4 py-6 text-sm text-[var(--text-muted)] md:px-8"><div className="mx-auto flex max-w-[1400px] flex-col justify-between gap-3 sm:flex-row"><p>CSPR Sentinel. Built for the Casper Agentic Buildathon.</p><a className="flex items-center gap-1.5 font-medium text-[var(--text)] hover:text-[var(--accent)]" href="https://github.com" target="_blank" rel="noreferrer">Open-source repository <ArrowSquareOut size={15} /></a></div></footer>
+      <footer className="border-t border-[var(--border)] px-4 py-6 text-sm text-[var(--text-muted)] md:px-8"><div className="mx-auto flex max-w-[1400px] flex-col justify-between gap-3 sm:flex-row"><p>CSPR Sentinel. Built for the Casper Agentic Buildathon.</p><a className="flex items-center gap-1.5 font-medium text-[var(--text)] hover:text-[var(--accent)]" href="https://github.com/yi-dong-z/cspr-sentinel" target="_blank" rel="noreferrer">Open-source repository <ArrowSquareOut size={15} /></a></div></footer>
     </div>
   );
 }

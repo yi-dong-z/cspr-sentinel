@@ -1,0 +1,9 @@
+CSPR Sentinel is a payment security and bilateral reputation platform for AI agent developers.
+
+In this demo, an RWA diligence agent evaluates a tokenized commercial paper. The active policy defines an automatic payment limit, a daily budget, an allow list, and a minimum provider reputation.
+
+The agent first purchases low-cost asset verification data. The request is within policy, so payment and delivery complete automatically. Next, the agent requests higher-cost risk intelligence. Because the price exceeds the automatic threshold, the request pauses before any signature is created.
+
+The owner reviews the exact service, amount, and policy reason, then approves the purchase. The workflow resumes, records settlement evidence, receives the provider response, and completes the diligence report.
+
+Every purchase appears in the audit ledger. Verified delivery, buyer ratings, payment reliability, and policy compliance update bilateral reputation. CSPR Sentinel is MCP-native, open source, and ready for Casper Testnet settlement.

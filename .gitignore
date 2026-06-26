@@ -10,5 +10,6 @@ coverage/
 .DS_Store
 .vercel/
 .secrets/
+.cache/
 contracts/reputation/target/
 .vercel
