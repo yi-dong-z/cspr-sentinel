@@ -1,0 +1,16 @@
+{
+  "transactionHash": "2bf444d69a3815dbaafbf93d13cfcf106e3a048fcfcd3c66b5845ca7a3ec70c5",
+  "packageKeyName": "reputation_registry_package_hash",
+  "contractPackageHash": "ae7ab6d49915d04761343bac1597776b323cc8e3bbf6cdd21ef222653034de5b",
+  "operatorPublicKey": "01c2fd003ef17caa420c92dc99a9cf1791a7ebe57d96349e1fa0ee7eefb46c63ea",
+  "namedKeys": [
+    {
+      "name": "reputation_registry_package_hash",
+      "key": "ae7ab6d49915d04761343bac1597776b323cc8e3bbf6cdd21ef222653034de5b"
+    },
+    {
+      "name": "reputation_registry_package_hash_access_token",
+      "key": "88ee107bb7b32949a89d3834f05bbfc55941e01af3a49dd42e9b7583dce6a18707"
+    }
+  ]
+}

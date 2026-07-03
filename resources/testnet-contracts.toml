@@ -1,0 +1,4 @@
+[reputation]
+package_key_name = "reputation_registry_package_hash"
+package_hash = "ae7ab6d49915d04761343bac1597776b323cc8e3bbf6cdd21ef222653034de5b"
+deploy_hash = "2bf444d69a3815dbaafbf93d13cfcf106e3a048fcfcd3c66b5845ca7a3ec70c5"

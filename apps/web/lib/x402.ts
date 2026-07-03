@@ -51,6 +51,8 @@ export async function protectProviderRequest(
   const core = registerExactCasperScheme(new x402ResourceServer(facilitator), { networks: [NETWORK_CASPER_TESTNET] });
   const decimals = Number(process.env.WCSPR_DECIMALS ?? "9");
   const amount = BigInt(Math.round(config.price * 10 ** decimals)).toString();
+  const tokenName = process.env.WCSPR_TOKEN_NAME ?? "WCSPR";
+  const tokenVersion = process.env.WCSPR_TOKEN_VERSION ?? "1";
   const path = new URL(request.url).pathname;
   const server = new x402HTTPResourceServer(core, {
     [`POST ${path}`]: {
@@ -58,7 +60,11 @@ export async function protectProviderRequest(
         scheme: "exact",
         network: NETWORK_CASPER_TESTNET,
         payTo: config.payee,
-        price: { asset: process.env.WCSPR_CONTRACT_PACKAGE_HASH!, amount },
+        price: {
+          asset: process.env.WCSPR_CONTRACT_PACKAGE_HASH!,
+          amount,
+          extra: { name: tokenName, version: tokenVersion }
+        },
         maxTimeoutSeconds: 120
       },
       description: config.name,

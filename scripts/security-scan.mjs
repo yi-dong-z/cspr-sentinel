@@ -2,7 +2,17 @@ import { readdir, readFile } from "node:fs/promises";
 import { join, relative } from "node:path";
 
 const root = new URL("../", import.meta.url).pathname;
-const ignored = new Set([".git", ".next", ".pnpm-store", ".secrets", "node_modules", "dist", "target", "coverage"]);
+const ignored = new Set([
+  ".cache",
+  ".git",
+  ".next",
+  ".pnpm-store",
+  ".secrets",
+  "node_modules",
+  "dist",
+  "target",
+  "coverage"
+]);
 const signatures = [
   /-----BEGIN (?:EC |RSA |OPENSSH )?PRIVATE KEY-----/,
   /sk-ant-[A-Za-z0-9_-]{24,}/,

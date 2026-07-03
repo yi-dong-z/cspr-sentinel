@@ -42,7 +42,7 @@ export class CasperReputationAnchor implements ReputationAnchor {
       provider_rating_sum: CLValue.newCLUint64(provider.counters.ratingSum)
     });
     const transaction = new ContractCallBuilder()
-      .byHash(contractHash.replace(/^contract-/, ""))
+      .byPackageHash(contractHash.replace(/^(?:contract-package-|package-)/, ""))
       .from(key.publicKey)
       .entryPoint("record_purchase")
       .chainName("casper-test")
@@ -74,7 +74,7 @@ export class CasperReputationAnchor implements ReputationAnchor {
     const pem = process.env.REPUTATION_OPERATOR_PRIVATE_KEY!;
     const key = PrivateKey.fromPem(pem.replaceAll("\\n", "\n"), KeyAlgorithm.ED25519);
     const transaction = new ContractCallBuilder()
-      .byHash(process.env.REPUTATION_CONTRACT_HASH!.replace(/^contract-/, ""))
+      .byPackageHash(process.env.REPUTATION_CONTRACT_HASH!.replace(/^(?:contract-package-|package-)/, ""))
       .from(key.publicKey)
       .entryPoint(entryPoint)
       .chainName("casper-test")

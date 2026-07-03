@@ -6,6 +6,7 @@ CSPR Sentinel is a policy-controlled payment and reputation layer for autonomous
 - MCP endpoint: `https://cspr-sentinel.vercel.app/api/mcp`
 - Facilitator discovery: [embedded `/supported` endpoint](https://cspr-sentinel.vercel.app/api/facilitator/supported)
 - Source: [github.com/yi-dong-z/cspr-sentinel](https://github.com/yi-dong-z/cspr-sentinel)
+- Casper Testnet reputation deploy: [`2bf444d69a3815dbaafbf93d13cfcf106e3a048fcfcd3c66b5845ca7a3ec70c5`](https://testnet.cspr.live/deploy/2bf444d69a3815dbaafbf93d13cfcf106e3a048fcfcd3c66b5845ca7a3ec70c5)
 
 The included RWA diligence agent demonstrates the full flow with synthetic commercial paper data:
 
@@ -117,7 +118,14 @@ Real mode fails closed: an incomplete x402 or reputation configuration will stop
 
 ## Deployment
 
-The public deployment runs on Vercel with Neon PostgreSQL persistence. It intentionally remains in clearly labelled simulation mode until the generated testnet wallets receive CSPR/WCSPR and the reputation contract is deployed; `DEMO_MODE=false` is the explicit cutover switch.
+The public deployment runs on Vercel with Neon PostgreSQL persistence and `DEMO_MODE=false`. The health gate at [`/api/health`](https://cspr-sentinel.vercel.app/api/health) reports Casper Testnet payments and on-chain reputation when real mode is correctly configured.
+
+Current testnet evidence:
+
+- Reputation package hash: `ae7ab6d49915d04761343bac1597776b323cc8e3bbf6cdd21ef222653034de5b`
+- Reputation deploy hash: [`2bf444d69a3815dbaafbf93d13cfcf106e3a048fcfcd3c66b5845ca7a3ec70c5`](https://testnet.cspr.live/deploy/2bf444d69a3815dbaafbf93d13cfcf106e3a048fcfcd3c66b5845ca7a3ec70c5)
+- Facilitator discovery: [`/api/facilitator/supported`](https://cspr-sentinel.vercel.app/api/facilitator/supported)
+- Unpaid provider check: `POST /api/providers/asset-verification` returns HTTP 402 with `casper:casper-test` payment requirements.
 
 1. Create a Neon database and apply the migration.
 2. Import this repository into Vercel with root directory `apps/web`.

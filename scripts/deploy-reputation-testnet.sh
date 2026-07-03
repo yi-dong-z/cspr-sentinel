@@ -24,4 +24,4 @@ docker run --rm \
   -e ODRA_CASPER_LIVENET_CHAIN_NAME=casper-test \
   "$IMAGE" \
   cargo run --locked --bin cspr_sentinel_reputation_cli -- \
-  --contracts-toml resources/testnet-contracts.toml deploy --deploy-mode default
+  --contracts-toml /repo/resources/testnet-contracts.toml deploy --deploy-mode default
